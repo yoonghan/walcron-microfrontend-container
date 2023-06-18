@@ -11,7 +11,7 @@ export default defineConfig({
       remotes: {
         remoteApp: "https://profiler.walcron.com/assets/remoteEntry.js",
       },
-      shared: ["react", "react-dom"],
+      shared: ["react", "react-dom", "react-router-dom"],
     }),
   ],
   build: {

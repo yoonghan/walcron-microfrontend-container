@@ -7,7 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "http://localhost:5001/assets/remoteEntry.js":
-        "/Users/han/Work/codes/nextjs/walcron-microfrontend/profiler/dist/assets/remoteEntry.js",
+        "./external_modules/profiler/remoteEntry.js",
       "http://localhost:5173/node_modules/react-router-dom/dist/main.js":
         "./node_modules/react-router-dom/dist/main.js",
     },

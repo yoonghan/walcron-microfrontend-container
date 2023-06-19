@@ -38,7 +38,7 @@ Important variables to set into deployer. Setting in Production/Preview is suffi
 | Variable          | Description                         | Default        |
 | ----------------- | ----------------------------------- | -------------- |
 | PROFILER_PROTOCOL | protocol of http/https for profiler | http           |
-| PROFILER_DOMAIN   | Domain for profiler.                | localhost:5001 |
+| PROFILER_DOMAIN   | Domain for profiler                 | localhost:5001 |
 
 ## Github PAT permission required
 

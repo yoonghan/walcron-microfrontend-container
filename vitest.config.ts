@@ -19,6 +19,7 @@ export default defineConfig({
     coverage: {
       provider: "istanbul",
       reporter: ["text", "cobertura"],
+      exclude: ["**/external_modules/*"],
       threshold: {
         global: {
           branches: 100,

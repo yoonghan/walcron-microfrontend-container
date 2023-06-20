@@ -30,9 +30,7 @@ function App() {
         <GroupButton
           buttons={[
             { text: "button1" },
-
             { text: "button2" },
-
             { text: "button3" },
           ]}
         />

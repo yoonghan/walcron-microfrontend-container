@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "types.d.ts"],
+  "include": ["src", "external_modules/profiler/typings/types.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

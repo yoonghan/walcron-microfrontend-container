@@ -40,6 +40,12 @@ Important variables to set into deployer. Setting in Production/Preview is suffi
 | PROFILER_PROTOCOL | protocol of http/https for profiler | http           |
 | PROFILER_DOMAIN   | Domain for profiler                 | localhost:5001 |
 
+Any new microfront end needs to be added.
+
+1. Make sure a publish to external_modules/\* is added into CI/CD to create mr to add new typing and declaration for test.
+2. Add into tsconfig.json, external_modules/\*/typings/type.d.ts into include for typescript check.
+3. Add into vite.config.ts for the new remote.
+
 ## Github PAT permission required
 
 1. For accessing private repo, please allow Profile -> Settings -> Personal Access Token (classic), open read:packages (basically th esame as vercel deployment). For more info refer: https://docs.github.com/en/packages/working-with-a-github-packages-registry. Add as Github secret in Settings->Secrets And variable and add NODE_TOKEN key.

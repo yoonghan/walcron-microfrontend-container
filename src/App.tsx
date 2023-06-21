@@ -2,8 +2,8 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import Button from "remoteApp/Button";
-import GroupButton from "remoteApp/GroupButton";
+import Button from "profiler/Button";
+import GroupButton from "profiler/GroupButton";
 
 function App() {
   const [count, setCount] = useState(0);

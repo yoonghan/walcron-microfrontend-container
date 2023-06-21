@@ -12,7 +12,7 @@ export const baseConfig: UserConfigExport = {
     federation({
       name: "app",
       remotes: {
-        remoteApp: `${protocol}://${domain}/assets/remoteEntry.js`,
+        profiler: `${protocol}://${domain}/assets/remoteEntry.js`,
       },
       shared: ["react", "react-dom", "react-router-dom"],
     }),

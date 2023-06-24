@@ -1,1 +1,0 @@
-import{j as t}from"./jsx-runtime-2576e2e0.js";import e from"./__federation_expose_Button-bbc1280a.js";const s=({buttons:r})=>t.jsx(t.Fragment,{children:r.map(o=>t.jsx(e,{},o.text))});export{s as default};

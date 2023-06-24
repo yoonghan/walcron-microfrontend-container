@@ -1,1 +1,0 @@
-import{importShared as e}from"./__federation_fn_import.js";import{j as t}from"./jsx-runtime-2576e2e0.js";const{useState:n}=await e("react"),a=()=>{const[o,r]=n(0);return t.jsxs("div",{children:[t.jsx("div",{children:o}),t.jsx("button",{onClick:()=>{r(o+1)},children:"I am a Button"})]})};export{a as default};

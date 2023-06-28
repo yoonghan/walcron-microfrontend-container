@@ -1,3 +1,4 @@
+import Button from "profiler/Button";
 import { Outlet, Link } from "react-router-dom";
 
 export default function Root() {
@@ -17,9 +18,7 @@ export default function Root() {
             <div id="search-spinner" aria-hidden hidden={true} />
             <div className="sr-only" aria-live="polite"></div>
           </form>
-          <form method="post">
-            <button type="submit">New</button>
-          </form>
+          <Button />
         </div>
         <nav>
           <ul>
@@ -27,7 +26,7 @@ export default function Root() {
               <Link to={`contacts/1`}>Your Name</Link>
             </li>
             <li>
-              <Link to={`contacts/2`}>Your Friend</Link>
+              <Link to={`profiler/contacts/2`}>Your Friend</Link>
             </li>
           </ul>
         </nav>

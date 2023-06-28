@@ -1,0 +1,1 @@
+import{importShared as i}from"./__federation_fn_import.js";import{j as o}from"./jsx-runtime-2576e2e0.js";import{r as c}from"./__federation_shared_react-dom.js";var t,r=c;t=r.createRoot,r.hydrateRoot;const m=await i("react");function p(e,a=!1){console.log(a),t(e).render(o.jsx(m.StrictMode,{children:o.jsx("div",{children:"Hi hi"})}))}export{p as default};

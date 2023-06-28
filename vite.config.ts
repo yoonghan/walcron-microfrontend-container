@@ -14,7 +14,17 @@ export const baseConfig: UserConfigExport = {
       remotes: {
         profiler: `${protocol}://${domain}/assets/remoteEntry.js`,
       },
-      shared: ["react", "react-dom", "react-router-dom"],
+      shared: {
+        react: {
+          requiredVersion: "^18.2.0",
+        },
+        "react-dom": {
+          requiredVersion: "^18.2.0",
+        },
+        "react-router-dom": {
+          requiredVersion: "^6.13.0",
+        },
+      },
     }),
   ],
   build: {

@@ -21,6 +21,12 @@ export default GroupButton;
 
     }
     
+    declare module "profiler/mount" {
+      function mount(element: HTMLElement, development?: boolean): void;
+export default mount;
+
+    }
+    
     declare module "profiler/appRoutes" {
       import { RouteObject } from "react-router-dom";
 const routes: RouteObject[];

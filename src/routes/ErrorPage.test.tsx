@@ -2,7 +2,7 @@ import ErrorPage from "./ErrorPage";
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
-import Root from "./routes/Root";
+import Root from "./Root";
 
 describe("error-page", () => {
   const renderComponent = (initialPageEntry: string) => {

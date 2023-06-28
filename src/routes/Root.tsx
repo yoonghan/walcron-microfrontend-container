@@ -1,8 +1,10 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { ThemeProvider, Link } from "@mui/material";
+import defaultTheme from "../components/style/theme";
 
 export default function Root() {
   return (
-    <>
+    <ThemeProvider theme={defaultTheme}>
       <div id="sidebar">
         <h1>React Router Contacts</h1>
         <div>
@@ -24,10 +26,15 @@ export default function Root() {
         <nav>
           <ul>
             <li>
-              <Link to={`contacts/1`}>Your Name</Link>
+              <Link href={`profiler`} color="inherit">
+                Profiler
+              </Link>
             </li>
             <li>
-              <Link to={`contacts/2`}>Your Friend</Link>
+              <Link href={`contacts/1`}>Your Name</Link>
+            </li>
+            <li>
+              <Link href={`contacts/2`}>Your Friend</Link>
             </li>
           </ul>
         </nav>
@@ -35,6 +42,6 @@ export default function Root() {
       <div id="detail">
         <Outlet />
       </div>
-    </>
+    </ThemeProvider>
   );
 }

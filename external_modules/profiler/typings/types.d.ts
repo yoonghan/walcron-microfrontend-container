@@ -23,7 +23,7 @@ export default GroupButton;
     
     declare module "profiler/appRoutes" {
       import { RouteObject } from "react-router-dom";
-const routes: RouteObject[];
+const routes: (path: string, errorElement?: import("react/jsx-runtime").JSX.Element) => RouteObject;
 export default routes;
 
     }

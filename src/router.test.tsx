@@ -33,7 +33,7 @@ describe("router", () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(screen.getByText("React Router Contacts")).toBeInTheDocument();
+    expect(screen.getByText("Navigation")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Your Name" })).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole("link", { name: "Your Name" }));

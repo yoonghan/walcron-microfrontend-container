@@ -1,12 +1,10 @@
 import { RouteObject, createBrowserRouter } from "react-router-dom";
-import Root from "./routes/Root";
+import Root from "./Root";
 import ErrorPage from "./ErrorPage";
-import appRoutes from "profiler/appRoutes";
+import profileRouter from "profiler/appRoutes";
 
 export const definedRoute: RouteObject[] = [
-  {
-    ...appRoutes("/profiler", <ErrorPage />),
-  },
+  { ...profileRouter("/profiler", <ErrorPage />) },
   {
     path: "/",
     element: <Root />,

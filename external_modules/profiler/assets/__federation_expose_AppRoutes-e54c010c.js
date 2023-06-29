@@ -1,1 +1,0 @@
-import{j as t}from"./jsx-runtime-2576e2e0.js";import o from"./__federation_expose_Contact-68aca434.js";import s from"./__federation_expose_Basic-198fa5e3.js";const r=[{path:"contacts/:contactId",element:t.jsx(o,{})},{path:"basic",element:t.jsx(s,{})}];export{r as default};

@@ -5,9 +5,7 @@ import appRoutes from "profiler/appRoutes";
 
 export const definedRoute: RouteObject[] = [
   {
-    path: "/profiler",
-    element: <Root />,
-    children: [...appRoutes],
+    ...appRoutes("/profiler", <ErrorPage />),
   },
   {
     path: "/",

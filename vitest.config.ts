@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 import { defineConfig } from "vite";
-import { baseConfig } from "./vite.config.ts";
+import { baseConfig } from "./vite.config";
 
 export default defineConfig({
   ...baseConfig,
@@ -10,6 +10,8 @@ export default defineConfig({
         "./external_modules/profiler/assets/remoteEntry.js",
       "http://localhost:5173/node_modules/react-router-dom/dist/main.js":
         "./node_modules/react-router-dom/dist/main.js",
+      "http://localhost:5173/node_modules/react/index.js":
+        "./node_modules/react/index.js",
     },
   },
   test: {

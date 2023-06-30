@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { ThemeProvider, Link } from "@mui/material";
 import defaultTheme from "../components/style/theme";
+import { chartPath, profilerPath } from "./constants";
 
 export default function Root() {
   return (
@@ -26,8 +27,13 @@ export default function Root() {
         <nav>
           <ul>
             <li>
-              <Link href={`profiler`} color="inherit">
+              <Link href={`${profilerPath}`} color="inherit">
                 Profiler
+              </Link>
+            </li>
+            <li>
+              <Link href={`${chartPath}`} color="inherit">
+                Chart
               </Link>
             </li>
             <li>

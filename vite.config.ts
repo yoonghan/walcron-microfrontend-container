@@ -2,8 +2,11 @@ import { UserConfigExport, defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import federation from "@originjs/vite-plugin-federation";
 
-const protocol = process.env.PROFILER_PROTOCOL || "http";
-const domain = process.env.PROFILER_DOMAIN || "localhost:5001";
+const profilerProtocol = process.env.PROFILER_PROTOCOL || "http";
+const profilerDomain = process.env.PROFILER_DOMAIN || "localhost:5001";
+
+const chartProtocol = process.env.CHART_PROTOCOL || "http";
+const chartDomain = process.env.CHART_DOMAIN || "localhost:5002";
 
 // https://vitejs.dev/config/
 export const baseConfig: UserConfigExport = {
@@ -12,7 +15,12 @@ export const baseConfig: UserConfigExport = {
     federation({
       name: "app",
       remotes: {
-        profiler: `${protocol}://${domain}/assets/remoteEntry.js`,
+        profiler: `${profilerProtocol}://${profilerDomain}/assets/remoteEntry.js`,
+        chart: {
+          external: `${chartProtocol}://${chartDomain}/remoteEntry.js`,
+          format: "var",
+          from: "webpack",
+        },
       },
       shared: ["react", "react-dom", "react-router-dom"],
     }),

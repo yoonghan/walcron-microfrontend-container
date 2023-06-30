@@ -39,4 +39,14 @@ describe("router", () => {
     await userEvent.click(screen.getByRole("link", { name: "Your Name" }));
     expect(await screen.findByText("your_handle")).toBeInTheDocument();
   });
+
+  it("should render chart and child page", () => {
+    const router = createMemoryRouter(definedRoute, {
+      initialEntries: ["/chart"],
+    });
+
+    render(<RouterProvider router={router} />);
+
+    expect(screen.getByText("Loading Chart...")).toBeInTheDocument();
+  });
 });

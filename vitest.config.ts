@@ -12,8 +12,8 @@ export default defineConfig({
         "./node_modules/react/index.js",
       "http://localhost:5173/node_modules/react-router-dom/dist/main.js":
         "./node_modules/react-router-dom/dist/main.js",
-      "http://localhost:5173/node_modules/react/index.js":
-        "./node_modules/react/index.js",
+      "http://localhost:5002/remoteEntry.js":
+        "./external_modules/chart/remoteEntry.js",
     },
   },
   test: {

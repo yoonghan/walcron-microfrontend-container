@@ -39,6 +39,8 @@ Important variables to set into deployer. Setting in Production/Preview is suffi
 | ----------------- | ----------------------------------- | -------------- |
 | PROFILER_PROTOCOL | protocol of http/https for profiler | http           |
 | PROFILER_DOMAIN   | Domain for profiler                 | localhost:5001 |
+| CHART_PROTOCOL    | protocol of http/https for chart    | http           |
+| CHART_DOMAIN      | Domain for chart                    | localhost:5002 |
 
 Any new microfront end needs to be added.
 

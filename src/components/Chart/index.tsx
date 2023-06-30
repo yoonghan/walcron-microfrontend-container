@@ -70,7 +70,7 @@ const Chart = () => {
     }
   });
 
-  return <div id="chart-mfe" />;
+  return <div ref={wrapperRef} id="chart-mfe" />;
 };
 
 export default Chart;

@@ -22,7 +22,7 @@ export const definedRoute: RouteObject[] = [
   {
     path: `/${chartPath}/*`,
     element: (
-      <Suspense fallback={"Can't be loaded"}>
+      <Suspense fallback={"Loading Chart"}>
         <ChartLazy />
       </Suspense>
     ),

@@ -5,6 +5,11 @@ import router from "./routes/router";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <div>
+      <h1>Walcron Microfrontend camp</h1>
+      <React.Suspense fallback={"Loading router..."}>
+        <RouterProvider router={router} />
+      </React.Suspense>
+    </div>
   </React.StrictMode>
 );

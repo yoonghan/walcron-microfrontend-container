@@ -70,7 +70,7 @@ const Chart = () => {
     }
   });
 
-  return <div ref={wrapperRef} id="chart-mfe" />;
+  return <div ref={wrapperRef} data-testid="chart-mfe" />;
 };
 
 export default Chart;

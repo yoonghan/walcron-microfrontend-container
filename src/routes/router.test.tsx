@@ -26,6 +26,17 @@ describe("router", () => {
     expect(screen.getByText("Not Found")).toBeInTheDocument();
   });
 
+  it("should render chart and child page", () => {
+    const router = createMemoryRouter(definedRoute, {
+      initialEntries: ["/chart"],
+    });
+
+    render(<RouterProvider router={router} />);
+
+    expect(screen.getByText("Loading Chart")).toBeInTheDocument();
+    expect(screen.queryByTestId("chart-mfe")).not.toBeInTheDocument();
+  });
+
   it("should render profiler and child page", async () => {
     const router = createMemoryRouter(definedRoute, {
       initialEntries: ["/profiler"],
@@ -38,16 +49,5 @@ describe("router", () => {
 
     await userEvent.click(screen.getByRole("link", { name: "Your Name" }));
     expect(await screen.findByText("your_handle")).toBeInTheDocument();
-  });
-
-  //must be after profiler
-  it("should render chart and child page", () => {
-    const router = createMemoryRouter(definedRoute, {
-      initialEntries: ["/chart"],
-    });
-
-    render(<RouterProvider router={router} />);
-
-    expect(screen.queryByTestId("chart-mfe")).not.toBeInTheDocument();
   });
 });

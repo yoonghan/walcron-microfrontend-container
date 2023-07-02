@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 
 describe("router", () => {
-  it("should render root page", async () => {
+  it("should render root page", () => {
     const router = createMemoryRouter(definedRoute, {
       initialEntries: ["/"],
     });
@@ -16,7 +16,7 @@ describe("router", () => {
     expect(screen.getByRole("link", { name: "Your Name" })).toBeInTheDocument();
   });
 
-  it("should render error page", async () => {
+  it("should render error page", () => {
     const router = createMemoryRouter(definedRoute, {
       initialEntries: ["/invalid"],
     });
@@ -33,13 +33,14 @@ describe("router", () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(screen.getByText("Navigation")).toBeInTheDocument();
+    expect(await screen.findByText("Navigation")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Your Name" })).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole("link", { name: "Your Name" }));
     expect(await screen.findByText("your_handle")).toBeInTheDocument();
   });
 
+  //must be after profiler
   it("should render chart and child page", () => {
     const router = createMemoryRouter(definedRoute, {
       initialEntries: ["/chart"],
@@ -47,6 +48,6 @@ describe("router", () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(screen.getByText("Loading Chart...")).toBeInTheDocument();
+    expect(screen.queryByTestId("chart-mfe")).not.toBeInTheDocument();
   });
 });

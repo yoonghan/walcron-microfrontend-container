@@ -1,15 +1,19 @@
 /* eslint-disable react-refresh/only-export-components */
 import { Suspense, lazy } from "react";
 import { RouteObject, createBrowserRouter } from "react-router-dom";
-import Root from "./Root";
 import ErrorPage from "./ErrorPage";
-import profileRouter from "profiler/appRoutes";
 import { chartPath, profilerPath } from "./constants";
+import Root from "./Root";
 
+export const ProfilerLazy = lazy(() => import("../components/Profiler"));
 export const ChartLazy = lazy(() => import("../components/Chart"));
 
 export const definedRoute: RouteObject[] = [
-  { ...profileRouter(`/${profilerPath}`, <ErrorPage />) },
+  {
+    path: `/${profilerPath}/*`,
+    element: <ProfilerLazy />,
+    errorElement: <ErrorPage />,
+  },
   {
     path: "/",
     element: <Root />,
@@ -18,7 +22,7 @@ export const definedRoute: RouteObject[] = [
   {
     path: `/${chartPath}/*`,
     element: (
-      <Suspense fallback="Loading Chart...">
+      <Suspense fallback={"Can't be loaded"}>
         <ChartLazy />
       </Suspense>
     ),

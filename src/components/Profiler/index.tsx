@@ -3,18 +3,42 @@ import appRoute from "profiler/appRoutes";
 import ErrorPage from "../../routes/ErrorPage";
 import { useEffect, useRef } from "react";
 import * as ReactDOM from "react-dom/client";
+import { AuthenticationContext } from "../../context/authentication";
 
-const Profiler = () => {
+type Props = {
+  onSignIn: () => void;
+  onSignOut: () => void;
+};
+
+const Profiler = ({ onSignIn, onSignOut }: Props) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<ReactDOM.Root>();
 
   useEffect(() => {
-    const route = createMemoryRouter([{ ...appRoute("/", <ErrorPage />) }]);
-    ReactDOM.createRoot(wrapperRef.current!).render(
-      <RouterProvider router={route} />
+    const route = createMemoryRouter(
+      [{ ...appRoute("/", <ErrorPage />, { onSignIn, onSignOut }) }],
+      { initialEntries: ["/auth/login"] }
     );
-  }, []);
+    if (rootRef.current === undefined) {
+      rootRef.current = ReactDOM.createRoot(wrapperRef.current!);
+    }
+    rootRef.current.render(<RouterProvider router={route} />);
+  }, [onSignIn, onSignOut]);
 
   return <div ref={wrapperRef} />;
 };
 
-export default Profiler;
+const ProfilerWithAuthentication = () => {
+  return (
+    <AuthenticationContext.Consumer>
+      {({ setIsSignedIn }) => (
+        <Profiler
+          onSignIn={() => setIsSignedIn(true)}
+          onSignOut={() => setIsSignedIn(false)}
+        />
+      )}
+    </AuthenticationContext.Consumer>
+  );
+};
+
+export default ProfilerWithAuthentication;

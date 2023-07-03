@@ -1,6 +1,5 @@
 import { RouterProvider } from "react-router-dom";
 import router from "./routes/router";
-import Header from "./components/Header";
 import { AuthenticationContext } from "./context/authentication";
 import { Suspense, useState } from "react";
 import defaultTheme from "./components/style/theme";
@@ -12,8 +11,7 @@ function App() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <AuthenticationContext.Provider value={{ isSignedIn }}>
-        <Header />
+      <AuthenticationContext.Provider value={{ isSignedIn, setIsSignedIn }}>
         <Suspense fallback={"Loading router..."}>
           <RouterProvider router={router} />
         </Suspense>

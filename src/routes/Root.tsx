@@ -1,10 +1,12 @@
 import { Outlet } from "react-router-dom";
 import { Link } from "@mui/material";
 import { chartPath, profilerPath } from "./constants";
+import Header from "../components/Header";
 
 export default function Root() {
   return (
     <>
+      <Header />
       <div id="sidebar">
         <h1>React Router Contacts</h1>
         <div>
@@ -34,12 +36,6 @@ export default function Root() {
               <Link href={`${chartPath}`} color="inherit">
                 Chart
               </Link>
-            </li>
-            <li>
-              <Link href={`contacts/1`}>Your Name</Link>
-            </li>
-            <li>
-              <Link href={`contacts/2`}>Your Friend</Link>
             </li>
           </ul>
         </nav>

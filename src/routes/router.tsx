@@ -10,23 +10,23 @@ export const ChartLazy = lazy(() => import("../components/Chart"));
 
 export const definedRoute: RouteObject[] = [
   {
-    path: `/${profilerPath}/*`,
-    element: <ProfilerLazy />,
-    errorElement: <ErrorPage />,
-  },
-  {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: `/${chartPath}/*`,
-    element: (
-      <Suspense fallback={"Loading Chart"}>
-        <ChartLazy />
-      </Suspense>
-    ),
-    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: `/${profilerPath}/*`,
+        element: <ProfilerLazy />,
+      },
+      {
+        path: `/${chartPath}/*`,
+        element: (
+          <Suspense fallback={"Loading Chart"}>
+            <ChartLazy />
+          </Suspense>
+        ),
+      },
+    ],
   },
 ];
 

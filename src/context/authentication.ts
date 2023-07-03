@@ -1,7 +1,15 @@
 import { createContext } from "react";
 
-export const props = {
-  isSignedIn: false,
+type Props = {
+  isSignedIn: boolean;
+  setIsSignedIn: (signIn: boolean) => void;
 };
 
-export const AuthenticationContext = createContext(props);
+export const defaultProps: Props = {
+  isSignedIn: false,
+  setIsSignedIn: () => {
+    //empty
+  },
+};
+
+export const AuthenticationContext = createContext(defaultProps);

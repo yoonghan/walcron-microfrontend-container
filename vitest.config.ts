@@ -14,6 +14,8 @@ export default defineConfig({
         "./node_modules/react-router-dom/dist/main.js",
       "http://localhost:5002/remoteEntry.js":
         "./external_modules/chart/remoteEntry.js",
+      "http://localhost:5173/node_modules/react-dom/index.js":
+        "./node_modules/react-dom/index.js",
     },
   },
   test: {

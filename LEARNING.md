@@ -30,3 +30,7 @@ _Cons_
 ## Import
 
 1. Implementation for main call should move App into bootstrap.js and use 'import("bootstrap")' instead of calling <App> directly. Reason is that import with brackets supports async call (import \* from '' is sync), this helps support any remote component calls that returns Promise instead of direct components.
+
+## Unknown exceptions
+
+1. To check why Checkbox of imported MUI have key unique error.

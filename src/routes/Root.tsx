@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
-import { ThemeProvider, Link } from "@mui/material";
-import defaultTheme from "../components/style/theme";
+import { Link } from "@mui/material";
 import { chartPath, profilerPath } from "./constants";
+import Header from "../components/Header";
 
 export default function Root() {
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <>
+      <Header />
       <div id="sidebar">
         <h1>React Router Contacts</h1>
         <div>
@@ -36,18 +37,12 @@ export default function Root() {
                 Chart
               </Link>
             </li>
-            <li>
-              <Link href={`contacts/1`}>Your Name</Link>
-            </li>
-            <li>
-              <Link href={`contacts/2`}>Your Friend</Link>
-            </li>
           </ul>
         </nav>
       </div>
       <div id="detail">
         <Outlet />
       </div>
-    </ThemeProvider>
+    </>
   );
 }

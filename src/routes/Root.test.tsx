@@ -1,7 +1,6 @@
 import Root from "./Root";
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 
 describe("root", () => {
@@ -18,11 +17,15 @@ describe("root", () => {
 
   render(<RouterProvider router={router} />);
 
-  it("should render root page", async () => {
+  it("should render root page", () => {
     expect(screen.getByText("React Router Contacts")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Your Name" })).toBeInTheDocument();
-
-    await userEvent.click(screen.getByRole("link", { name: "Your Name" }));
-    expect(await screen.findByText("Click on contact")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Profiler" })).toHaveAttribute(
+      "href",
+      "profiler"
+    );
+    expect(screen.getByRole("link", { name: "Chart" })).toHaveAttribute(
+      "href",
+      "chart"
+    );
   });
 });

@@ -13,7 +13,6 @@ describe("router", () => {
     render(<RouterProvider router={router} />);
 
     expect(screen.getByText("React Router Contacts")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Your Name" })).toBeInTheDocument();
   });
 
   it("should render error page", () => {

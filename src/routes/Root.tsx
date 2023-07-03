@@ -1,11 +1,10 @@
 import { Outlet } from "react-router-dom";
-import { ThemeProvider, Link } from "@mui/material";
-import defaultTheme from "../components/style/theme";
+import { Link } from "@mui/material";
 import { chartPath, profilerPath } from "./constants";
 
 export default function Root() {
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <>
       <div id="sidebar">
         <h1>React Router Contacts</h1>
         <div>
@@ -48,6 +47,6 @@ export default function Root() {
       <div id="detail">
         <Outlet />
       </div>
-    </ThemeProvider>
+    </>
   );
 }

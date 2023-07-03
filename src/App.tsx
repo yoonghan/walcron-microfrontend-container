@@ -1,44 +1,24 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { RouterProvider } from "react-router-dom";
+import router from "./routes/router";
+import Header from "./components/Header";
+import { AuthenticationContext } from "./context/authentication";
+import { Suspense, useState } from "react";
+import defaultTheme from "./components/style/theme";
 import "./App.css";
-import Button from "profiler/Button";
-import GroupButton from "profiler/GroupButton";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   return (
-    <>
-      <Button />
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-        <GroupButton
-          buttons={[
-            { text: "button1" },
-            { text: "button2" },
-            { text: "button3" },
-          ]}
-        />
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <ThemeProvider theme={defaultTheme}>
+      <AuthenticationContext.Provider value={{ isSignedIn }}>
+        <Header />
+        <Suspense fallback={"Loading router..."}>
+          <RouterProvider router={router} />
+        </Suspense>
+      </AuthenticationContext.Provider>
+    </ThemeProvider>
   );
 }
 

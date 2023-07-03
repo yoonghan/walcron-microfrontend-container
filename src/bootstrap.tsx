@@ -1,15 +1,9 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
-import { RouterProvider } from "react-router-dom";
-import router from "./routes/router";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <div>
-      <h1>Walcron Microfrontend camp</h1>
-      <React.Suspense fallback={"Loading router..."}>
-        <RouterProvider router={router} />
-      </React.Suspense>
-    </div>
-  </React.StrictMode>
+createRoot(document.getElementById("root") as HTMLElement).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
 );

@@ -1,6 +1,8 @@
 
     declare module "profiler/SignIn" {
-      export default function SignIn(): import("react/jsx-runtime").JSX.Element;
+      export default function SignIn({ onSignIn }: {
+    onSignIn: () => void;
+}): import("react/jsx-runtime").JSX.Element;
 
     }
     
@@ -23,7 +25,11 @@ export default GroupButton;
     
     declare module "profiler/appRoutes" {
       import { RouteObject } from "react-router-dom";
-const routes: (path: string, errorElement?: import("react/jsx-runtime").JSX.Element) => RouteObject;
+type Props = {
+    onSignIn: () => void;
+    onSignOut: () => void;
+};
+const routes: (path: string, errorElement?: import("react/jsx-runtime").JSX.Element, props?: Props) => RouteObject;
 export default routes;
 
     }

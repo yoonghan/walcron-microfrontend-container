@@ -16,7 +16,7 @@ const Profiler = ({ onSignIn, onSignOut }: Props) => {
 
   useEffect(() => {
     const route = createMemoryRouter(
-      [{ ...appRoute("/", <ErrorPage />, { onSignIn, onSignOut }) }],
+      [{ ...appRoute("/", "appname", "container", <ErrorPage />, { onSignIn, onSignOut }) }],
       { initialEntries: ["/auth/login"] }
     );
     if (rootRef.current === undefined) {

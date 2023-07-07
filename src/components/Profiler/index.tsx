@@ -1,10 +1,7 @@
 import {
-  Routes,
   Link,
-  MemoryRouter,
-  Route,
-  useLocation,
   useNavigate,
+  useLocation,
   createMemoryRouter,
   RouterProvider,
 } from "react-router-dom";

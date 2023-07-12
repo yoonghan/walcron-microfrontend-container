@@ -63,7 +63,7 @@ const Profiler = ({ onSignIn, onSignOut }: Props) => {
     const router = createMemoryRouter(
       [
         {
-          ...appRoute("/profiler", "profiler", "container", <ErrorPage />, {
+          ...appRoute("profiler", "container", <ErrorPage />, {
             onSignIn,
             onSignOut,
           }),

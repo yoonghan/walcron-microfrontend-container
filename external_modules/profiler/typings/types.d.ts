@@ -29,7 +29,7 @@ type Props = {
     onSignIn: () => void;
     onSignOut: () => void;
 };
-const routes: (path: string, appName?: string, containerName?: string, errorElement?: import("react/jsx-runtime").JSX.Element, props?: Props) => RouteObject;
+const routes: (appName?: string, containerName?: string, errorElement?: import("react/jsx-runtime").JSX.Element, props?: Props) => RouteObject;
 export default routes;
 
     }

@@ -1,5 +1,4 @@
 import {
-  Link,
   useNavigate,
   useLocation,
   createMemoryRouter,
@@ -67,9 +66,14 @@ const Profiler = ({ onSignIn, onSignOut }: Props) => {
     const router = createMemoryRouter(
       [
         {
-          ...appRoute("profiler", "container", <ErrorPage />, {
-            onSignIn,
-            onSignOut,
+          ...appRoute({
+            appName: "profiler",
+            containerName: "container",
+            errorElement: <ErrorPage />,
+            props: {
+              onSignIn,
+              onSignOut,
+            },
           }),
         },
       ],
@@ -95,13 +99,10 @@ const ProfilerWithAuthentication = () => {
   return (
     <AuthenticationContext.Consumer>
       {({ setIsSignedIn }) => (
-        <>
-          <Profiler
-            onSignIn={() => setIsSignedIn(true)}
-            onSignOut={() => setIsSignedIn(false)}
-          />
-          <Link to={`${baseUrl}/auth/login`}>Login</Link>
-        </>
+        <Profiler
+          onSignIn={() => setIsSignedIn(true)}
+          onSignOut={() => setIsSignedIn(false)}
+        />
       )}
     </AuthenticationContext.Consumer>
   );

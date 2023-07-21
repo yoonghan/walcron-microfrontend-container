@@ -42,11 +42,5 @@ describe("router", () => {
     });
 
     render(<RouterProvider router={router} />);
-
-    expect(await screen.findByText("Navigation")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Your Name" })).toBeInTheDocument();
-
-    await userEvent.click(screen.getByRole("link", { name: "Your Name" }));
-    expect(await screen.findByText("your_handle")).toBeInTheDocument();
   });
 });

@@ -51,6 +51,7 @@ const Header = () => {
                 color="inherit"
                 aria-label="main-menu"
                 sx={{ mr: 2 }}
+                onClick={handleSignInClose}
               >
                 <MenuIcon />
               </IconButton>

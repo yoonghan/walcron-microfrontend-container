@@ -4,7 +4,7 @@ import {
   createMemoryRouter,
   RouterProvider,
 } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import * as ReactDOM from "react-dom/client";
 import { AuthenticationContext } from "../../context/authentication";
 import appRoute from "profiler/appRoutes";
@@ -24,6 +24,11 @@ const Profiler = ({ onSignIn, onSignOut }: Props) => {
   const rootRef = useRef<ReactDOM.Root>();
   const location = useLocation();
   const navigate = useNavigate();
+
+  const onProfileSignIn = useCallback(() => {
+    onSignIn();
+    navigate("/profiler/profile");
+  }, [onSignIn, navigate]);
 
   useEffect(() => {
     if (location.pathname.startsWith(baseUrl)) {
@@ -71,7 +76,7 @@ const Profiler = ({ onSignIn, onSignOut }: Props) => {
             containerName: "container",
             errorElement: <ErrorPage />,
             props: {
-              onSignIn,
+              onSignIn: onProfileSignIn,
               onSignOut,
             },
           }),
@@ -90,7 +95,7 @@ const Profiler = ({ onSignIn, onSignOut }: Props) => {
     //     rootRef.current = undefined;
     //   });
     // };
-  }, [location.pathname, onSignIn, onSignOut]);
+  }, [location.pathname, onProfileSignIn, onSignOut]);
 
   return <div ref={wrapperRef} />;
 };

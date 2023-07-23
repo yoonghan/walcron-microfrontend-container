@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import Header from ".";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { AuthenticationContext } from "../../context/authentication";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";

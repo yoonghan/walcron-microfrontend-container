@@ -4,6 +4,7 @@ import { RouteObject, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 import { chartPath, profilerPath } from "./constants";
 import Root from "./Root";
+import MainPage from "./MainPage";
 
 export const ProfilerLazy = lazy(() => import("../components/Profiler"));
 export const ChartLazy = lazy(() => import("../components/Chart"));
@@ -14,6 +15,10 @@ export const definedRoute: RouteObject[] = [
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <MainPage />,
+      },
       {
         path: `/${profilerPath}/*`,
         element: <ProfilerLazy />,

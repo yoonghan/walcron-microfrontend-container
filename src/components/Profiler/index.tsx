@@ -31,6 +31,7 @@ const Profiler = ({ onSignIn, onSignOut }: Props) => {
   }, [onSignIn, navigate]);
 
   useEffect(() => {
+    console.log("changing", location.pathname);
     if (location.pathname.startsWith(baseUrl)) {
       window.dispatchEvent(
         new CustomEvent(`[${container}] navigated`, {
@@ -68,6 +69,7 @@ const Profiler = ({ onSignIn, onSignOut }: Props) => {
       return;
     }
     const initalEntry = location.pathname.substring(baseUrl.length) + "/";
+    console.log("initialEntry", initalEntry);
     const router = createMemoryRouter(
       [
         {

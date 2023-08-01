@@ -105,5 +105,25 @@ describe("Header", () => {
       await userEvent.click(mainMenuBtn);
       expect(screen.queryByText("Profile")).not.toBeInTheDocument();
     });
+
+    it("should toggle when clicked on main menu when signed in", async () => {
+      renderComponent(true);
+
+      const mainMenuBtn = screen.getByRole("button", { name: "main-menu" });
+
+      await userEvent.click(mainMenuBtn);
+      expect(screen.getByText("Chart")).toBeInTheDocument();
+      expect(screen.getByText("About")).toBeInTheDocument();
+    });
+
+    it("should toggle when clicked on main menu when signed in", async () => {
+      renderComponent(false);
+
+      const mainMenuBtn = screen.getByRole("button", { name: "main-menu" });
+
+      await userEvent.click(mainMenuBtn);
+      expect(screen.queryByText("Chart")).not.toBeInTheDocument();
+      expect(screen.getByText("About")).toBeInTheDocument();
+    });
   });
 });

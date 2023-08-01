@@ -15,9 +15,9 @@ export const baseConfig: UserConfigExport = {
     federation({
       name: "app",
       remotes: {
-        profiler: `${profilerProtocol}://${profilerDomain}/assets/remoteEntry.js`,
+        profiler: `${profilerProtocol}://${profilerDomain}/assets/remoteEntry.js?v=${Date.now()}`,
         chart: {
-          external: `${chartProtocol}://${chartDomain}/remoteEntry.js`,
+          external: `${chartProtocol}://${chartDomain}/remoteEntry.js?v=${Date.now()}`,
           format: "var",
           from: "webpack",
         },

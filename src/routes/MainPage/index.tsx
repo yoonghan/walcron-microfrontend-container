@@ -116,7 +116,7 @@ export default function MainPage() {
             title: "Caching",
             description:
               "Caching of sub projects may cause the container project to load previous out-dated-pages.",
-            subDescription: "Still in evaluation.",
+            subDescription: "Cache busting by adding date during compilation.",
           },
           {
             title: "Testing",

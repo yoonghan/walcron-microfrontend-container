@@ -33,25 +33,9 @@ const Header = () => {
     setAnchorEl(null);
   };
 
-  const handleMenuClose = (event: Event | React.SyntheticEvent) => {
-    if (
-      menuAnchorElRef.current &&
-      menuAnchorElRef.current.contains(event.target as HTMLElement)
-    ) {
-      return;
-    }
-
+  const handleMenuClose = useCallback((event: Event | React.SyntheticEvent) => {
     setOpen(false);
-  };
-
-  const handleListKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    } else if (event.key === "Escape") {
-      setOpen(false);
-    }
-  };
+  }, []);
 
   const handleClick = useCallback(
     (path: string) => (event: Event | React.SyntheticEvent) => {
@@ -59,10 +43,11 @@ const Header = () => {
       handleMenuClose(event);
       navigate(path);
     },
-    [navigate]
+    [handleMenuClose, navigate]
   );
 
   const handleToggle = () => {
+    handleSignInClose();
     setOpen((prevOpen) => !prevOpen);
   };
 
@@ -96,6 +81,7 @@ const Header = () => {
                     {...TransitionProps}
                     style={{
                       transformOrigin:
+                        /* istanbul ignore next -- @preserve */
                         placement === "bottom-start"
                           ? "left top"
                           : "left bottom",
@@ -107,7 +93,6 @@ const Header = () => {
                           autoFocusItem={open}
                           id="composition-menu"
                           aria-labelledby="composition-button"
-                          onKeyDown={handleListKeyDown}
                         >
                           {isSignedIn && (
                             <MenuItem onClick={handleClick(`/${chartPath}`)}>

@@ -17,7 +17,7 @@ export default function NavigationBreadcrumb({
             Home
           </Link>
         ) : null;
-      } else if (path !== "") {
+      } else {
         accumulatedPath += "/" + path;
         return (
           <Link
@@ -34,14 +34,12 @@ export default function NavigationBreadcrumb({
     return splittedLinks;
   }, [pathname]);
 
-  console.log("v", genLinks);
-
   return (
     <>
       <Breadcrumbs aria-label="breadcrumb" sx={{ p: 1 }}>
         {genLinks}
       </Breadcrumbs>
-      {(genLinks || []).length > 1 && <Divider />}
+      {genLinks.length > 1 && <Divider />}
     </>
   );
 }

@@ -7,7 +7,9 @@ describe("About", () => {
     render(<About />);
     expect(screen.getByText("About")).toBeInTheDocument();
     expect(
-      screen.getByText("This site is used for user up-keep and authentication.")
+      screen.getByText(
+        "This site is used as a container to host multiple projects."
+      )
     ).toBeInTheDocument();
   });
 

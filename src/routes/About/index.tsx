@@ -9,7 +9,7 @@ const About = () => {
           About
         </Typography>
         <Typography component="p">
-          This site is used as a shell to contain multiple projects.
+          This site is used as a container to host multiple projects.
         </Typography>
 
         <Typography align="center">

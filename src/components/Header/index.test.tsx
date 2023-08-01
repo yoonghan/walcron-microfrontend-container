@@ -125,5 +125,22 @@ describe("Header", () => {
       expect(screen.queryByText("Chart")).not.toBeInTheDocument();
       expect(screen.getByText("About")).toBeInTheDocument();
     });
+
+    it("menu screen closes or open based on special conditions", async () => {
+      renderComponent(false);
+
+      const mainMenuBtn = screen.getByRole("button", { name: "main-menu" });
+
+      //when type escape
+      await userEvent.click(mainMenuBtn);
+      expect(screen.queryByText("About")).toBeInTheDocument();
+      await userEvent.type(mainMenuBtn, "{escape}");
+      expect(screen.queryByText("About")).not.toBeInTheDocument();
+
+      //when type tab
+      await userEvent.click(mainMenuBtn);
+      await userEvent.type(mainMenuBtn, "{tab}");
+      expect(screen.queryByText("About")).not.toBeInTheDocument();
+    });
   });
 });

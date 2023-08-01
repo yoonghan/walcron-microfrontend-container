@@ -33,14 +33,14 @@ const Header = () => {
     setAnchorEl(null);
   };
 
-  const handleMenuClose = useCallback((event: Event | React.SyntheticEvent) => {
+  const handleMenuClose = useCallback(() => {
     setOpen(false);
   }, []);
 
   const handleClick = useCallback(
-    (path: string) => (event: Event | React.SyntheticEvent) => {
+    (path: string) => () => {
       handleSignInClose();
-      handleMenuClose(event);
+      handleMenuClose();
       navigate(path);
     },
     [handleMenuClose, navigate]

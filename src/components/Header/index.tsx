@@ -7,21 +7,23 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  Popper,
+  Grow,
+  Paper,
+  ClickAwayListener,
+  MenuList,
 } from "@mui/material";
 import { AuthenticationContext } from "../../context/authentication";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { profilerPath } from "../../routes/constants";
+import { chartPath, profilerPath } from "../../routes/constants";
 import { Menu as MenuIcon, AccountCircle } from "@mui/icons-material";
 
 const Header = () => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-  const handleProfileClick = () => {
-    handleSignInClose();
-    navigate(`/${profilerPath}/profile`);
-  };
+  const menuAnchorElRef = useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = useState(false);
 
   const handleSignInClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -31,13 +33,23 @@ const Header = () => {
     setAnchorEl(null);
   };
 
-  const authenticationOnClick = useCallback(
-    (isSignedIn: boolean) => () => {
-      navigate(`/${profilerPath}/auth/${isSignedIn ? "logout" : "login"}`);
+  const handleMenuClose = useCallback(() => {
+    setOpen(false);
+  }, []);
+
+  const handleClick = useCallback(
+    (path: string) => () => {
       handleSignInClose();
+      handleMenuClose();
+      navigate(path);
     },
-    [navigate]
+    [handleMenuClose, navigate]
   );
+
+  const handleToggle = () => {
+    handleSignInClose();
+    setOpen((prevOpen) => !prevOpen);
+  };
 
   return (
     <AuthenticationContext.Consumer>
@@ -51,17 +63,58 @@ const Header = () => {
                 color="inherit"
                 aria-label="main-menu"
                 sx={{ mr: 2 }}
-                onClick={handleSignInClose}
+                ref={menuAnchorElRef}
+                onClick={handleToggle}
               >
                 <MenuIcon />
               </IconButton>
+              <Popper
+                open={open}
+                anchorEl={menuAnchorElRef.current}
+                role={undefined}
+                placement="bottom-start"
+                transition
+                disablePortal
+              >
+                {({ TransitionProps, placement }) => (
+                  <Grow
+                    {...TransitionProps}
+                    style={{
+                      transformOrigin:
+                        /* istanbul ignore next -- @preserve */
+                        placement === "bottom-start"
+                          ? "left top"
+                          : "left bottom",
+                    }}
+                  >
+                    <Paper>
+                      <ClickAwayListener onClickAway={handleMenuClose}>
+                        <MenuList
+                          autoFocusItem={open}
+                          id="composition-menu"
+                          aria-labelledby="composition-button"
+                        >
+                          {isSignedIn && (
+                            <MenuItem onClick={handleClick(`/${chartPath}`)}>
+                              Chart
+                            </MenuItem>
+                          )}
+                          <MenuItem onClick={handleClick(`/about`)}>
+                            About
+                          </MenuItem>
+                        </MenuList>
+                      </ClickAwayListener>
+                    </Paper>
+                  </Grow>
+                )}
+              </Popper>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 Microfrontend Dashboard
               </Typography>
               {!isSignedIn && (
                 <Button
                   color="inherit"
-                  onClick={authenticationOnClick(isSignedIn)}
+                  onClick={handleClick(`/${profilerPath}/auth/login`)}
                 >
                   Login
                 </Button>
@@ -91,8 +144,12 @@ const Header = () => {
                       horizontal: "left",
                     }}
                   >
-                    <MenuItem onClick={handleProfileClick}>Profile</MenuItem>
-                    <MenuItem onClick={authenticationOnClick(isSignedIn)}>
+                    <MenuItem onClick={handleClick(`/${profilerPath}/profile`)}>
+                      Profile
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleClick(`/${profilerPath}/auth/logout`)}
+                    >
                       Logout
                     </MenuItem>
                   </Menu>

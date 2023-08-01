@@ -5,6 +5,7 @@ import ErrorPage from "./ErrorPage";
 import { chartPath, profilerPath } from "./constants";
 import Root from "./Root";
 import MainPage from "./MainPage";
+import About from "./About";
 
 export const ProfilerLazy = lazy(() => import("../components/Profiler"));
 export const ChartLazy = lazy(() => import("../components/Chart"));
@@ -18,6 +19,10 @@ export const definedRoute: RouteObject[] = [
       {
         path: "/",
         element: <MainPage />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: `/${profilerPath}/*`,

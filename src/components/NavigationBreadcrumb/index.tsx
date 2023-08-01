@@ -1,4 +1,4 @@
-import { Breadcrumbs, Link } from "@mui/material";
+import { Breadcrumbs, Divider, Link } from "@mui/material";
 import { useMemo } from "react";
 
 export default function NavigationBreadcrumb({
@@ -17,7 +17,7 @@ export default function NavigationBreadcrumb({
             Home
           </Link>
         ) : null;
-      } else if (path !== "") {
+      } else {
         accumulatedPath += "/" + path;
         return (
           <Link
@@ -34,5 +34,12 @@ export default function NavigationBreadcrumb({
     return splittedLinks;
   }, [pathname]);
 
-  return <Breadcrumbs aria-label="breadcrumb">{genLinks}</Breadcrumbs>;
+  return (
+    <>
+      <Breadcrumbs aria-label="breadcrumb" sx={{ p: 1 }}>
+        {genLinks}
+      </Breadcrumbs>
+      {genLinks.length > 1 && <Divider />}
+    </>
+  );
 }
